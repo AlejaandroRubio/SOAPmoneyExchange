@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApp1.ServiceReference2 {
+namespace WindowsFormsApp1.ServiceReference1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.IService1")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
@@ -35,12 +35,12 @@ namespace WindowsFormsApp1.ServiceReference2 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : WindowsFormsApp1.ServiceReference2.IService1, System.ServiceModel.IClientChannel {
+    public interface IService1Channel : WindowsFormsApp1.ServiceReference1.IService1, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<WindowsFormsApp1.ServiceReference2.IService1>, WindowsFormsApp1.ServiceReference2.IService1 {
+    public partial class Service1Client : System.ServiceModel.ClientBase<WindowsFormsApp1.ServiceReference1.IService1>, WindowsFormsApp1.ServiceReference1.IService1 {
         
         public Service1Client() {
         }

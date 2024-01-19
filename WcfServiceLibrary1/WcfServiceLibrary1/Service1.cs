@@ -64,6 +64,19 @@ namespace WcfServiceLibrary1
             else { return 0; }
         }
 
+        public ExchagePetition GetDataUsingDataContract(ExchagePetition composite)
+        {
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.Monto > 0)
+            {
+                composite.Monto += 1;
+            }
+            return composite;
+        }
+
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
             if (composite == null)

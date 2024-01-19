@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
@@ -25,6 +26,33 @@ namespace WcfServiceLibrary1
 
     // Utilice un contrato de datos, como se ilustra en el ejemplo siguiente, para agregar tipos compuestos a las operaciones de servicio.
     // Puede agregar archivos XSD al proyecto. Después de compilar el proyecto, puede usar directamente los tipos de datos definidos aquí, con el espacio de nombres "WcfServiceLibrary1.ContractType".
+
+    [DataContract]
+    public class ExchagePetition
+    {
+
+         string monedaOrigen;
+         string monedaDestino;
+         int monto;
+
+        [DataMember]
+        public string MonedaOrigen {
+            get {return monedaOrigen;}
+            set { monedaOrigen = value;}
+        }
+        [DataMember]
+        public string MonedaDestino {
+            get { return monedaDestino; }
+            set { monedaDestino = value; }
+        }
+        [DataMember]
+        public int Monto {
+            get { return monto; }
+            set { monto = value; }
+        }
+
+    }
+    
     [DataContract]
     public class CompositeType
     {

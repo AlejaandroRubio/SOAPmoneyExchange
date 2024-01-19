@@ -27,17 +27,19 @@ namespace WindowsFormsApp1
 
         private void button1_Click(System.Object sender, System.EventArgs e)
         {
-            ServiceReference2.Service1Client client = new
-                ServiceReference2.Service1Client();
+            ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
             decimal returnExchange;
 
 
             string MonedaOrigen = DropDownBoxOrigen.Text;
-           string MonedaDestino = DropDownBoxDestino.Text;
+            string MonedaDestino = DropDownBoxDestino.Text;
 
             returnExchange = client.CambioDeMoneda(MonedaOrigen, MonedaDestino, Convert.ToInt32(textBox1.Text));
 
             MessageBox.Show("El monto a cambiar es "+textBox1.Text+" "+ MonedaOrigen+" a "+ MonedaDestino +" es: "+ returnExchange + "");
+
+
+            ServiceReference1.CompositeType composite = new ServiceReference1.CompositeType();
             
 
         }
