@@ -15,11 +15,11 @@ namespace WindowsFormsApp1.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        string GetData(string value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CambioDeMonedaExchagePetition", ReplyAction="http://tempuri.org/IService1/CambioDeMonedaExchagePetitionResponse")]
+        WcfServiceLibrary1.ExchagePetition CambioDeMonedaExchagePetition(WcfServiceLibrary1.ExchagePetition petition);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(string value);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CambioDeMonedaExchagePetition", ReplyAction="http://tempuri.org/IService1/CambioDeMonedaExchagePetitionResponse")]
+        System.Threading.Tasks.Task<WcfServiceLibrary1.ExchagePetition> CambioDeMonedaExchagePetitionAsync(WcfServiceLibrary1.ExchagePetition petition);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
         WcfServiceLibrary1.CompositeType GetDataUsingDataContract(WcfServiceLibrary1.CompositeType composite);
@@ -28,10 +28,16 @@ namespace WindowsFormsApp1.ServiceReference1 {
         System.Threading.Tasks.Task<WcfServiceLibrary1.CompositeType> GetDataUsingDataContractAsync(WcfServiceLibrary1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CambioDeMoneda", ReplyAction="http://tempuri.org/IService1/CambioDeMonedaResponse")]
-        decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, int Monto);
+        decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, decimal Monto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CambioDeMoneda", ReplyAction="http://tempuri.org/IService1/CambioDeMonedaResponse")]
-        System.Threading.Tasks.Task<decimal> CambioDeMonedaAsync(string MonedaOrigen, string MonedaDestino, int Monto);
+        System.Threading.Tasks.Task<decimal> CambioDeMonedaAsync(string MonedaOrigen, string MonedaDestino, decimal Monto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/nada", ReplyAction="http://tempuri.org/IService1/nadaResponse")]
+        void nada();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/nada", ReplyAction="http://tempuri.org/IService1/nadaResponse")]
+        System.Threading.Tasks.Task nadaAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -61,12 +67,12 @@ namespace WindowsFormsApp1.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(string value) {
-            return base.Channel.GetData(value);
+        public WcfServiceLibrary1.ExchagePetition CambioDeMonedaExchagePetition(WcfServiceLibrary1.ExchagePetition petition) {
+            return base.Channel.CambioDeMonedaExchagePetition(petition);
         }
         
-        public System.Threading.Tasks.Task<string> GetDataAsync(string value) {
-            return base.Channel.GetDataAsync(value);
+        public System.Threading.Tasks.Task<WcfServiceLibrary1.ExchagePetition> CambioDeMonedaExchagePetitionAsync(WcfServiceLibrary1.ExchagePetition petition) {
+            return base.Channel.CambioDeMonedaExchagePetitionAsync(petition);
         }
         
         public WcfServiceLibrary1.CompositeType GetDataUsingDataContract(WcfServiceLibrary1.CompositeType composite) {
@@ -77,12 +83,20 @@ namespace WindowsFormsApp1.ServiceReference1 {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, int Monto) {
+        public decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, decimal Monto) {
             return base.Channel.CambioDeMoneda(MonedaOrigen, MonedaDestino, Monto);
         }
         
-        public System.Threading.Tasks.Task<decimal> CambioDeMonedaAsync(string MonedaOrigen, string MonedaDestino, int Monto) {
+        public System.Threading.Tasks.Task<decimal> CambioDeMonedaAsync(string MonedaOrigen, string MonedaDestino, decimal Monto) {
             return base.Channel.CambioDeMonedaAsync(MonedaOrigen, MonedaDestino, Monto);
+        }
+        
+        public void nada() {
+            base.Channel.nada();
+        }
+        
+        public System.Threading.Tasks.Task nadaAsync() {
+            return base.Channel.nadaAsync();
         }
     }
 }

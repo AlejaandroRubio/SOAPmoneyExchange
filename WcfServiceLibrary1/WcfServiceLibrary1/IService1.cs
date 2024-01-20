@@ -13,13 +13,16 @@ namespace WcfServiceLibrary1
     public interface IService1
     {
         [OperationContract]
-        string GetData(string value);
+        ExchagePetition CambioDeMonedaExchagePetition(ExchagePetition petition);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, int Monto);
+        decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, decimal Monto);
+
+        [OperationContract]
+        void nada();
 
         // TODO: agregue aquí sus operaciones de servicio
     }
@@ -33,7 +36,7 @@ namespace WcfServiceLibrary1
 
          string monedaOrigen;
          string monedaDestino;
-         int monto;
+         decimal monto;
 
         [DataMember]
         public string MonedaOrigen {
@@ -46,7 +49,7 @@ namespace WcfServiceLibrary1
             set { monedaDestino = value; }
         }
         [DataMember]
-        public int Monto {
+        public decimal Monto {
             get { return monto; }
             set { monto = value; }
         }

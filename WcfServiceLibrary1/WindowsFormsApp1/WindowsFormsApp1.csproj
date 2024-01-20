@@ -84,6 +84,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\DataSources\WcfServiceLibrary1.CompositeType.datasource" />
+    <None Include="Properties\DataSources\WcfServiceLibrary1.ExchagePetition.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

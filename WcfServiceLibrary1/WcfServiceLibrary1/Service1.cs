@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 
 namespace WcfServiceLibrary1
 {
@@ -14,10 +15,7 @@ namespace WcfServiceLibrary1
         private const decimal TazaDeCambioEUR_JPY = 163m;
         private const decimal TazaDeCambioUSD_JPY = 149m;
 
-        public string GetData(string value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
+   
 
         public decimal CambioDeMonedaRate(string MonedaOrigen, string MonedaDestino)
         {
@@ -32,13 +30,13 @@ namespace WcfServiceLibrary1
 
         }      
         
-        public decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, int Monto)
+        public decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, decimal Monto)
         {
             decimal MontoDeTazaDeCambio = CambioDeMonedaRate(MonedaOrigen, MonedaDestino);
 
             if (MonedaOrigen == "EUR" && MonedaDestino == "USD")
             {
-                return Monto * MontoDeTazaDeCambio;
+                return Math.Round(Monto * MontoDeTazaDeCambio,2);
             }
             else if (MonedaOrigen == "USD" && MonedaDestino == "EUR")
             {
@@ -46,16 +44,15 @@ namespace WcfServiceLibrary1
             }
             else if (MonedaOrigen == "JPY" && MonedaDestino == "EUR")
             {
-
                 return Math.Round(Monto / MontoDeTazaDeCambio, 2);
             }
             else if (MonedaOrigen == "EUR" && MonedaDestino == "JPY")
             {
-                return Monto * MontoDeTazaDeCambio;
+                return Math.Round(Monto * MontoDeTazaDeCambio, 2);
             }
             else if (MonedaOrigen == "USD" && MonedaDestino == "JPY")
             {
-                return Monto * MontoDeTazaDeCambio;
+                return Math.Round(Monto * MontoDeTazaDeCambio, 2);
             }
             else if (MonedaOrigen == "JPY" && MonedaDestino == "USD")
             {
@@ -64,17 +61,63 @@ namespace WcfServiceLibrary1
             else { return 0; }
         }
 
-        public ExchagePetition GetDataUsingDataContract(ExchagePetition composite)
+        public ExchagePetition resultOfOperation(string monedaOrigen, string monedaDestino, decimal monto)
         {
-            if (composite == null)
+
+            ExchagePetition result = new ExchagePetition
             {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.Monto > 0)
+                MonedaOrigen = monedaOrigen,
+                MonedaDestino = monedaDestino,
+                Monto = monto
+            };
+
+            return result;
+
+        }
+
+        public ExchagePetition CambioDeMonedaExchagePetition(ExchagePetition petition)
+        {
+            decimal MontoDeTazaDeCambio = CambioDeMonedaRate(petition.MonedaOrigen, petition.MonedaDestino);
+
+            if (petition.MonedaOrigen == "EUR" && petition.MonedaDestino == "USD")
             {
-                composite.Monto += 1;
+                decimal monto = Convert.ToDecimal(petition.Monto);
+                decimal resultado = Math.Round(monto * MontoDeTazaDeCambio, 2);
+                return resultOfOperation(petition.MonedaOrigen,petition.MonedaDestino, resultado);
+
             }
-            return composite;
+            else if (petition.MonedaOrigen == "USD" && petition.MonedaDestino == "EUR")
+            {
+                decimal monto = Convert.ToDecimal(petition.Monto);
+                decimal resultado= Math.Round(monto / MontoDeTazaDeCambio, 2);
+                return resultOfOperation(petition.MonedaOrigen, petition.MonedaDestino, resultado);
+            }
+            else if (petition.MonedaOrigen == "JPY" && petition.MonedaDestino == "EUR")
+            {
+                decimal monto = Convert.ToDecimal(petition.Monto);
+                decimal resultado = Math.Round(monto / MontoDeTazaDeCambio, 2);
+                return resultOfOperation(petition.MonedaOrigen, petition.MonedaDestino, resultado);
+            }
+            else if (petition.MonedaOrigen == "EUR" && petition.MonedaDestino == "JPY")
+            {
+                decimal monto = Convert.ToDecimal(petition.Monto);
+                decimal resultado = Math.Round(monto * MontoDeTazaDeCambio, 2);
+                return resultOfOperation(petition.MonedaOrigen, petition.MonedaDestino, resultado);
+
+            }
+            else if (petition.MonedaOrigen == "USD" && petition.MonedaDestino == "JPY")
+            {
+                decimal monto = Convert.ToDecimal(petition.Monto);
+                decimal resultado = Math.Round(monto * MontoDeTazaDeCambio, 2);
+                return resultOfOperation(petition.MonedaOrigen, petition.MonedaDestino, resultado);
+            }
+            else if (petition.MonedaOrigen == "JPY" && petition.MonedaDestino == "USD")
+            {
+                decimal monto = Convert.ToDecimal(petition.Monto);
+                decimal resultado = Math.Round(monto / MontoDeTazaDeCambio, 2);
+                return resultOfOperation(petition.MonedaOrigen, petition.MonedaDestino, resultado);
+            }
+            else { return null; }
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
@@ -88,6 +131,12 @@ namespace WcfServiceLibrary1
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }
+
+        public void nada() { 
+        
+            int nada = 0;
+
         }
     }
 }
