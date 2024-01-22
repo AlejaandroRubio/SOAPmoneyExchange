@@ -11,12 +11,13 @@ namespace WcfServiceLibrary1
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código y en el archivo de configuración a la vez.
     public class Service1 : IService1
     {
+        #region TazaDeCambio
         private const decimal TazaDeCambioUSD_EUR = 1.10m;
         private const decimal TazaDeCambioEUR_JPY = 163m;
         private const decimal TazaDeCambioUSD_JPY = 149m;
+        #endregion
 
-   
-
+        #region CambioDeMonedaRate
         public decimal CambioDeMonedaRate(string MonedaOrigen, string MonedaDestino)
         {
 
@@ -28,8 +29,10 @@ namespace WcfServiceLibrary1
             else if (MonedaOrigen == "JPY" && MonedaDestino == "USD") { return TazaDeCambioUSD_JPY; }
             else { return 0; }
 
-        }      
-        
+        }
+        #endregion
+
+        #region CambioDeMoneda
         public decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, decimal Monto)
         {
             decimal MontoDeTazaDeCambio = CambioDeMonedaRate(MonedaOrigen, MonedaDestino);
@@ -60,21 +63,9 @@ namespace WcfServiceLibrary1
             }
             else { return 0; }
         }
+        #endregion
 
-        public ExchagePetition resultOfOperation(string monedaOrigen, string monedaDestino, decimal monto)
-        {
-
-            ExchagePetition result = new ExchagePetition
-            {
-                MonedaOrigen = monedaOrigen,
-                MonedaDestino = monedaDestino,
-                Monto = monto
-            };
-
-            return result;
-
-        }
-
+        #region CambioDeMonedaExchagePetition
         public ExchagePetition CambioDeMonedaExchagePetition(ExchagePetition petition)
         {
             decimal MontoDeTazaDeCambio = CambioDeMonedaRate(petition.MonedaOrigen, petition.MonedaDestino);
@@ -119,24 +110,23 @@ namespace WcfServiceLibrary1
             }
             else { return null; }
         }
+        #endregion
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        #region resultOfOperation
+        public ExchagePetition resultOfOperation(string monedaOrigen, string monedaDestino, decimal monto)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
 
-        public void nada() { 
-        
-            int nada = 0;
+            ExchagePetition result = new ExchagePetition
+            {
+                MonedaOrigen = monedaOrigen,
+                MonedaDestino = monedaDestino,
+                Monto = monto
+            };
+
+            return result;
 
         }
+        #endregion
+
     }
 }

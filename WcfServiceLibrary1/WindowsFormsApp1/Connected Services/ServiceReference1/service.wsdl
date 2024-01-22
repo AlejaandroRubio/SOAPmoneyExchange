@@ -13,40 +13,20 @@
   <wsdl:message name="IService1_CambioDeMonedaExchagePetition_OutputMessage">
     <wsdl:part name="parameters" element="tns:CambioDeMonedaExchagePetitionResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_CambioDeMoneda_InputMessage">
     <wsdl:part name="parameters" element="tns:CambioDeMoneda" />
   </wsdl:message>
   <wsdl:message name="IService1_CambioDeMoneda_OutputMessage">
     <wsdl:part name="parameters" element="tns:CambioDeMonedaResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_nada_InputMessage">
-    <wsdl:part name="parameters" element="tns:nada" />
-  </wsdl:message>
-  <wsdl:message name="IService1_nada_OutputMessage">
-    <wsdl:part name="parameters" element="tns:nadaResponse" />
-  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="CambioDeMonedaExchagePetition">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CambioDeMonedaExchagePetition" message="tns:IService1_CambioDeMonedaExchagePetition_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CambioDeMonedaExchagePetitionResponse" message="tns:IService1_CambioDeMonedaExchagePetition_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="CambioDeMoneda">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CambioDeMoneda" message="tns:IService1_CambioDeMoneda_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CambioDeMonedaResponse" message="tns:IService1_CambioDeMoneda_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="nada">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/nada" message="tns:IService1_nada_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/nadaResponse" message="tns:IService1_nada_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -60,26 +40,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="CambioDeMoneda">
       <soap:operation soapAction="http://tempuri.org/IService1/CambioDeMoneda" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="nada">
-      <soap:operation soapAction="http://tempuri.org/IService1/nada" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

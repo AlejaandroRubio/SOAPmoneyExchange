@@ -16,13 +16,7 @@ namespace WcfServiceLibrary1
         ExchagePetition CambioDeMonedaExchagePetition(ExchagePetition petition);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
-        [OperationContract]
         decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, decimal Monto);
-
-        [OperationContract]
-        void nada();
 
         // TODO: agregue aquí sus operaciones de servicio
     }
@@ -54,26 +48,5 @@ namespace WcfServiceLibrary1
             set { monto = value; }
         }
 
-    }
-    
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
     }
 }

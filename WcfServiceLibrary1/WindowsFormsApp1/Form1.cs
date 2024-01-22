@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
         {
             ServiceReference1.Service1Client client = new ServiceReference1.Service1Client();
             decimal returnExchange;
-            ExchagePetition returnExchange2;
+            ExchagePetition returnExchangeStructure;
 
 
 
@@ -41,14 +41,20 @@ namespace WindowsFormsApp1
             decimal MontoLocal = Convert.ToDecimal(textBox1.Text);
 
             returnExchange = client.CambioDeMoneda(MonedaOrigen, MonedaDestino, MontoLocal);
-            MessageBox.Show("El monto a cambiar es " + textBox1.Text + " " + MonedaOrigen + " a " + MonedaDestino + " es: " + returnExchange + "");
+            //MessageBox.Show("El monto a cambiar es " + textBox1.Text + " " + MonedaOrigen + " a " + MonedaDestino + " es: " + returnExchange + "");
             
             petition.MonedaOrigen= MonedaOrigen;
             petition.MonedaDestino= MonedaDestino;
             petition.Monto = MontoLocal;
 
-            returnExchange2 = client.CambioDeMonedaExchagePetition(petition);
-            MessageBox.Show("El monto a cambiar es " + textBox1.Text + " " + returnExchange2.MonedaOrigen + " a " + returnExchange2.MonedaDestino + " es: " + returnExchange2.Monto + "");
+            returnExchangeStructure = client.CambioDeMonedaExchagePetition(petition);
+            //MessageBox.Show("El monto a cambiar es " + textBox1.Text + " " + returnExchangeStructure.MonedaOrigen + " a " + returnExchangeStructure.MonedaDestino + " es: " + returnExchangeStructure.Monto + "");
+
+            labelRespuesta.Text= "El monto a cambiar es " + textBox1.Text + " " + returnExchangeStructure.MonedaOrigen + " a " + returnExchangeStructure.MonedaDestino + " es: " + returnExchangeStructure.Monto + "";
+
+            DropDownBoxOrigen.Text = "";
+            DropDownBoxDestino.Text = "";
+            textBox1.Text = "";
 
             
         }

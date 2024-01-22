@@ -21,23 +21,11 @@ namespace WindowsFormsApp1.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CambioDeMonedaExchagePetition", ReplyAction="http://tempuri.org/IService1/CambioDeMonedaExchagePetitionResponse")]
         System.Threading.Tasks.Task<WcfServiceLibrary1.ExchagePetition> CambioDeMonedaExchagePetitionAsync(WcfServiceLibrary1.ExchagePetition petition);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        WcfServiceLibrary1.CompositeType GetDataUsingDataContract(WcfServiceLibrary1.CompositeType composite);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WcfServiceLibrary1.CompositeType> GetDataUsingDataContractAsync(WcfServiceLibrary1.CompositeType composite);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CambioDeMoneda", ReplyAction="http://tempuri.org/IService1/CambioDeMonedaResponse")]
         decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, decimal Monto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CambioDeMoneda", ReplyAction="http://tempuri.org/IService1/CambioDeMonedaResponse")]
         System.Threading.Tasks.Task<decimal> CambioDeMonedaAsync(string MonedaOrigen, string MonedaDestino, decimal Monto);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/nada", ReplyAction="http://tempuri.org/IService1/nadaResponse")]
-        void nada();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/nada", ReplyAction="http://tempuri.org/IService1/nadaResponse")]
-        System.Threading.Tasks.Task nadaAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -75,28 +63,12 @@ namespace WindowsFormsApp1.ServiceReference1 {
             return base.Channel.CambioDeMonedaExchagePetitionAsync(petition);
         }
         
-        public WcfServiceLibrary1.CompositeType GetDataUsingDataContract(WcfServiceLibrary1.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
-        }
-        
-        public System.Threading.Tasks.Task<WcfServiceLibrary1.CompositeType> GetDataUsingDataContractAsync(WcfServiceLibrary1.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
-        }
-        
         public decimal CambioDeMoneda(string MonedaOrigen, string MonedaDestino, decimal Monto) {
             return base.Channel.CambioDeMoneda(MonedaOrigen, MonedaDestino, Monto);
         }
         
         public System.Threading.Tasks.Task<decimal> CambioDeMonedaAsync(string MonedaOrigen, string MonedaDestino, decimal Monto) {
             return base.Channel.CambioDeMonedaAsync(MonedaOrigen, MonedaDestino, Monto);
-        }
-        
-        public void nada() {
-            base.Channel.nada();
-        }
-        
-        public System.Threading.Tasks.Task nadaAsync() {
-            return base.Channel.nadaAsync();
         }
     }
 }

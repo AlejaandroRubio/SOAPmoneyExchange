@@ -8,11 +8,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ExchagePetition" nillable="true" type="tns:ExchagePetition" />
-  <xs:complexType name="CompositeType">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
-      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
 </xs:schema>
